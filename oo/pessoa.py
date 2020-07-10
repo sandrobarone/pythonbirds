@@ -17,11 +17,12 @@ outro nome, mas no Python usam a palavra "self")
 
 
 class Pessoa:
-	def __init__(self, nome=None, idade=35):
+	def __init__(self, *filhos, nome=None, idade=35):
 		# "__init__" é um 'construtor' e ele permite criar a funcionalidade inicial que sua
 		# classe terá !!!
 		self.idade = idade
 		self.nome = nome
+		self.filhos = list(filhos)
 
 	# "self.nome" é
 	# "nome" é
@@ -32,16 +33,21 @@ class Pessoa:
 
 
 if __name__ == '__main__':
-	p = Pessoa('Ordnas')
+	# sandro = Pessoa('Ordnas')
+	sandro = Pessoa(nome='Sandro')
+	barone = Pessoa(sandro, nome='Barone')
 	"""Abaixo nao é a forma usual de se executar um método ("def")."""
-	print(Pessoa.cumprimentar(p))  # Esta nao é a forma usual de se executar um método ("def").
+	print(Pessoa.cumprimentar(barone))  # Esta nao é a forma usual de se executar um método ("def").
 	"""A forma usual é:
 	Ao chamar um "metodo" a partir do "objeto", nao precisa passá-lo como 1º parametro, o Python 
 	passa o objeto "p" como 1º parametro implicitamente!!! """
-	print(p.cumprimentar())  # Ao chamar um "metodo" a partir do "objeto", nao precisa passá-lo
+	print(barone.cumprimentar())  # Ao chamar um "metodo" a partir do "objeto", nao precisa passá-lo
 	# como 1º parametro, o Python passa o objeto "p" como 1º parametro implicitamente!!!
-	print(id(p))  # Checando o "id"
-	print(p.nome)
-	p.nome = 'Sandro'
-	print(p.nome)
-	print(p.idade)
+	print(id(barone))  # Checando o "id"
+	# print(sandro.nome)
+	# sandro.nome = 'Sandro'
+	print('Nome do Pai:\n\t', barone.nome)
+	print('Idade do Pai:\n\t', barone.idade)
+	# print(barone.filhos)
+	for filho in barone.filhos:
+		print('Imprimindo os filhos de Barone:\n\t', filho.nome)
