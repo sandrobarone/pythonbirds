@@ -34,7 +34,9 @@ class Pessoa:
 
 if __name__ == '__main__':
 	# sandro = Pessoa('Ordnas')
+	"""O objeto complexo 'sandro' é do tipo 'Pessoa'"""
 	sandro = Pessoa(nome='Sandro')
+	"""O objeto complexo 'sandro' é passado como um atributo para o objeto 'barone' """
 	barone = Pessoa(sandro, nome='Barone')
 	"""Abaixo nao é a forma usual de se executar um método ("def")."""
 	print(Pessoa.cumprimentar(barone))  # Esta nao é a forma usual de se executar um método ("def").
