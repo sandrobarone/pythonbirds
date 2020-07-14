@@ -36,20 +36,38 @@ if __name__ == '__main__':
 	# sandro = Pessoa('Ordnas')
 	"""O objeto complexo 'sandro' é do tipo 'Pessoa'"""
 	sandro = Pessoa(nome='Sandro')
-	"""O objeto complexo 'sandro' é passado como um atributo para o objeto 'barone' """
-	barone = Pessoa(sandro, nome='Barone')
+	"""O objeto complexo 'sandro' é passado como um atributo para o objeto 'enoque' """
+	enoque = Pessoa(sandro, nome='Enoque')
 	"""Abaixo nao é a forma usual de se executar um método ("def")."""
-	print(Pessoa.cumprimentar(barone))  # Esta nao é a forma usual de se executar um método ("def").
+	print(Pessoa.cumprimentar(enoque))  # Esta nao é a forma usual de se executar um método ("def").
 	"""A forma usual é:
 	Ao chamar um "metodo" a partir do "objeto", nao precisa passá-lo como 1º parametro, o Python 
 	passa o objeto "p" como 1º parametro implicitamente!!! """
-	print(barone.cumprimentar())  # Ao chamar um "metodo" a partir do "objeto", nao precisa passá-lo
+	print(enoque.cumprimentar())  # Ao chamar um "metodo" a partir do "objeto", nao precisa passá-lo
 	# como 1º parametro, o Python passa o objeto "p" como 1º parametro implicitamente!!!
-	print(id(barone))  # Checando o "id"
+	print(id(enoque))  # Checando o "id"
 	# print(sandro.nome)
 	# sandro.nome = 'Sandro'
-	print('Nome do Pai:\n\t', barone.nome)
-	print('Idade do Pai:\n\t', barone.idade)
-	# print(barone.filhos)
-	for filho in barone.filhos:
-		print('Imprimindo os filhos de Barone:\n\t', filho.nome)
+	print('Nome do Pai:\n\t', enoque.nome)
+	print('Idade do Pai:\n\t', enoque.idade)
+	# print(enoque.filhos)
+	for filho in enoque.filhos:
+		print('Imprimindo os filhos de Enoque:\n\t', filho.nome)
+
+"""Um atributo especial '__dict__' usado para checar todos os atributos de instancia (todoa aqueles criados 
+no '__init__' quanto aqueles criatos dinamicamente"""
+print('\t', enoque.__dict__)
+print('\t', sandro.__dict__)
+"""
+Criacao
+do
+'atributo dinamico' 'sobrenome'"""
+enoque.sobrenome = 'Passos'
+"""
+Deletando
+o
+'atributo dinamico' 'filhos'"""
+del enoque.filhos
+print('Criado "atrib dinam" "sobrenome", retirado o "atrib dinam" "filhos" em "enoque":\n\t',
+	  enoque.__dict__)
+print('\t', sandro.__dict__)
