@@ -93,5 +93,5 @@ print('Após deletar o atributo do objeto "enoque" e nao da classe "Pessoa" todo
 Atributos de Instância: Criados normalmente dentro do método "__init__"
 Atributos Dinamicos: Criados através da atribuicao e removidos atraves da palavra reservada "del".
 Atributos de Classe: ou "Atributo Default", é criado fora do "__init__", pois nao vai variar independente 
-da "Classe" e assim ocupa menos espaco na memória.
+da "Classe" e assim ocupa menos espaco na memória (é o mesmo para todos os objetos).
 """
