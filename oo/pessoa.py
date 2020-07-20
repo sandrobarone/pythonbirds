@@ -17,6 +17,11 @@ outro nome, mas no Python usam a palavra "self")
 
 
 class Pessoa:
+	# "olhos = 2" é um "atributo default" ou "atributo de classe".
+	# É criado fora do "__init__" pois este atributo nao varia, independente da "pessoa".
+	# Criado fora ele ocupa menos memória.
+	olhos = 2
+
 	def __init__(self, *filhos, nome=None, idade=35):
 		# "__init__" é um 'construtor' e ele permite criar a funcionalidade inicial que sua
 		# classe terá !!!
@@ -59,15 +64,24 @@ no '__init__' quanto aqueles criatos dinamicamente"""
 print('\t', enoque.__dict__)
 print('\t', sandro.__dict__)
 """
-Criacao
-do
-'atributo dinamico' 'sobrenome'"""
+Criacao do 'atributo dinamico' 'sobrenome'"""
 enoque.sobrenome = 'Passos'
 """
-Deletando
-o
-'atributo dinamico' 'filhos'"""
+Deletando o 'atributo dinamico' 'filhos'"""
 del enoque.filhos
+""" Inserindo o atributo "olhos" em "enoque" ele passa a fazer parte do "__dict__" do objeto "enoque" e o 
+"__dict__" do objeto "sandro" nao foi comprometido """
+enoque.olhos = 1
 print('Criado "atrib dinam" "sobrenome", retirado o "atrib dinam" "filhos" em "enoque":\n\t',
 	  enoque.__dict__)
 print('\t', sandro.__dict__)
+print('Numero de olhos da Pessoa:\n\t', Pessoa.olhos)
+print('Numero de olhos de Sandro:\n\t', sandro.olhos)
+print('Numero de olhos de Enoque:\n\t', enoque.olhos)
+print('Verificando que o id deste atributo "olhos" é o mesmo acessando da sua classe ou da \ninstancia de '
+	  '"Pessoa", exceto o atributo do objeto "enoque":\n\t', id(Pessoa.olhos), id(sandro.olhos),
+	  id(enoque.olhos))
+"""Após deletar o atributo do objeto "enoque" e nao da classe "Pessoa" todos passarao a ter o mesmo "id"."""
+del enoque.olhos
+print('Após deletar o atributo do objeto "enoque" e nao da classe "Pessoa" todos passarao a ter o '
+	  'mesmo "id":\n\t', id(Pessoa.olhos), id(sandro.olhos), id(enoque.olhos))
