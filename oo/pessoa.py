@@ -17,9 +17,12 @@ outro nome, mas no Python usam a palavra "self")
 
 
 class Pessoa:
-	# "olhos = 2" é um "atributo default" ou "atributo de classe".
-	# É criado fora do "__init__" pois este atributo nao varia, independente da "pessoa".
-	# Criado fora ele ocupa menos memória.
+	"""
+	"olhos = 2" é um "atributo default" ou "Atributo de Classe".
+	É criado fora do "__init__" pois este atributo nao varia, independente da "pessoa".
+	Criado fora ele ocupa menos memória.
+	"""
+
 	olhos = 2
 
 	def __init__(self, *filhos, nome=None, idade=35):
@@ -85,3 +88,10 @@ print('Verificando que o id deste atributo "olhos" é o mesmo acessando da sua c
 del enoque.olhos
 print('Após deletar o atributo do objeto "enoque" e nao da classe "Pessoa" todos passarao a ter o '
 	  'mesmo "id":\n\t', id(Pessoa.olhos), id(sandro.olhos), id(enoque.olhos))
+
+"""
+Atributos de Instância: Criados normalmente dentro do método "__init__"
+Atributos Dinamicos: Criados através da atribuicao e removidos atraves da palavra reservada "del".
+Atributos de Classe: ou "Atributo Default", é criado fora do "__init__", pois nao vai variar independente 
+da "Classe" e assim ocupa menos espaco na memória.
+"""
