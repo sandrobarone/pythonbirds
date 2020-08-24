@@ -103,8 +103,9 @@ Exemplo:
 """
 
 
-class Motor():
-	def __init__(self):
-		self.velocidade = 0
+class Motor:
+    def __init__(self):
+        self.velocidade = 0
 
-	pass
+    pass
+
