@@ -40,6 +40,15 @@ class Pessoa:
 		return f'Olá {id(self)}'
 
 
+	@staticmethod
+	def metodo_estatico():
+		return 42
+
+	@classmethod
+	def nome_e_atributos_de_classes(cls):
+		return f'{cls} - olhos {cls.olhos}'
+
+
 if __name__ == '__main__':
 	# sandro = Pessoa('Ordnas')
 	"""O objeto complexo 'sandro' é do tipo 'Pessoa'"""
@@ -88,6 +97,8 @@ print('Verificando que o id deste atributo "olhos" é o mesmo acessando da sua c
 del enoque.olhos
 print('Após deletar o atributo do objeto "enoque" e nao da classe "Pessoa" todos passarao a ter o '
 	  'mesmo "id":\n\t', id(Pessoa.olhos), id(sandro.olhos), id(enoque.olhos))
+print(Pessoa.metodo_estatico(), sandro.metodo_estatico())
+print(Pessoa.nome_e_atributos_de_classes(), sandro.nome_e_atributos_de_classes())
 
 """
 Atributos de Instância: Criados normalmente dentro do método "__init__"
