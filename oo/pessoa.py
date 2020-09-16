@@ -35,10 +35,11 @@ class Pessoa:
 	# "self.nome" é
 	# "nome" é
 
-	def cumprimentar(self):  # "self" pode ser qualquer palavra, mas em Python sempre usamos
+	def cumprimentar(
+			self,
+			):  # "self" pode ser qualquer palavra, mas em Python sempre usamos
 		# a palavra "self" como parametro.
-		return f'Olá {id(self)}'
-
+		return f"Olá {id(self)}"
 
 	@staticmethod
 	def metodo_estatico():
@@ -46,17 +47,19 @@ class Pessoa:
 
 	@classmethod
 	def nome_e_atributos_de_classes(cls):
-		return f'{cls} - olhos {cls.olhos}'
+		return f"{cls} - olhos {cls.olhos}"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 	# sandro = Pessoa('Ordnas')
 	"""O objeto complexo 'sandro' é do tipo 'Pessoa'"""
-	sandro = Pessoa(nome='Sandro')
+	sandro = Pessoa(nome="Sandro")
 	"""O objeto complexo 'sandro' é passado como um atributo para o objeto 'enoque' """
-	enoque = Pessoa(sandro, nome='Enoque')
+	enoque = Pessoa(sandro, nome="Enoque")
 	"""Abaixo nao é a forma usual de se executar um método ("def")."""
-	print(Pessoa.cumprimentar(enoque))  # Esta nao é a forma usual de se executar um método ("def").
+	print(
+			Pessoa.cumprimentar(enoque)
+			)  # Esta nao é a forma usual de se executar um método ("def").
 	"""A forma usual é:
 	Ao chamar um "metodo" a partir do "objeto", nao precisa passá-lo como 1º parametro, o Python 
 	passa o objeto "p" como 1º parametro implicitamente!!! """
@@ -65,44 +68,52 @@ if __name__ == '__main__':
 	print(id(enoque))  # Checando o "id"
 	# print(sandro.nome)
 	# sandro.nome = 'Sandro'
-	print('Nome do Pai:\n\t', enoque.nome)
-	print('Idade do Pai:\n\t', enoque.idade)
+	print("Nome do Pai:\n\t", enoque.nome)
+	print("Idade do Pai:\n\t", enoque.idade)
 	# print(enoque.filhos)
 	for filho in enoque.filhos:
-		print('Imprimindo os filhos de Enoque:\n\t', filho.nome)
+		print("Imprimindo os filhos de Enoque:\n\t", filho.nome)
 
 """Um atributo especial '__dict__' usado para checar todos os atributos de instancia (todoa aqueles criados 
 no '__init__' quanto aqueles criatos dinamicamente"""
-print('\t', enoque.__dict__)
-print('\t', sandro.__dict__)
+print("\t", enoque.__dict__)
+print("\t", sandro.__dict__)
 """
 Criacao do 'atributo dinamico' 'sobrenome'"""
-enoque.sobrenome = 'Passos'
+enoque.sobrenome = "Passos"
 """
 Deletando o 'atributo dinamico' 'filhos'"""
 del enoque.filhos
 """ Inserindo o atributo "olhos" em "enoque" ele passa a fazer parte do "__dict__" do objeto "enoque" e o 
 "__dict__" do objeto "sandro" nao foi comprometido """
 enoque.olhos = 1
-print('Criado "atrib dinam" "sobrenome", retirado o "atrib dinam" "filhos" em "enoque":\n\t',
-	  enoque.__dict__)
-print('\t', sandro.__dict__)
-print('Numero de olhos da Pessoa:\n\t', Pessoa.olhos)
-print('Numero de olhos de Sandro:\n\t', sandro.olhos)
-print('Numero de olhos de Enoque:\n\t', enoque.olhos)
+print('Criado "atrib dinam" "sobrenome", retirado o "atrib dinam" "filhos" em "enoque":\n\t', enoque.__dict__,
+	  )
+print("\t", sandro.__dict__)
+print("Numero de olhos da Pessoa:\n\t", Pessoa.olhos)
+print("Numero de olhos de Sandro:\n\t", sandro.olhos)
+print("Numero de olhos de Enoque:\n\t", enoque.olhos)
 print('Verificando que o id deste atributo "olhos" é o mesmo acessando da sua classe ou da \ninstancia de '
-	  '"Pessoa", exceto o atributo do objeto "enoque":\n\t', id(Pessoa.olhos), id(sandro.olhos),
-	  id(enoque.olhos))
+	  '"Pessoa", exceto o atributo do objeto "enoque":\n\t',
+	  id(Pessoa.olhos),
+	  id(sandro.olhos),
+	  id(enoque.olhos),
+	  )
 """Após deletar o atributo do objeto "enoque" e nao da classe "Pessoa" todos passarao a ter o mesmo "id"."""
 del enoque.olhos
-print('Após deletar o atributo do objeto "enoque" e nao da classe "Pessoa" todos passarao a ter o '
-	  'mesmo "id":\n\t', id(Pessoa.olhos), id(sandro.olhos), id(enoque.olhos))
+print(
+		'Após deletar o atributo do objeto "enoque" e nao da classe "Pessoa" todos passarao a ter o '
+		'mesmo "id":\n\t',
+		id(Pessoa.olhos),
+		id(sandro.olhos),
+		id(enoque.olhos),
+		)
 print(Pessoa.metodo_estatico(), sandro.metodo_estatico())
 print(Pessoa.nome_e_atributos_de_classes(), sandro.nome_e_atributos_de_classes())
 
 """
 Atributos de Instância: Criados normalmente dentro do método "__init__"
-Atributos Dinamicos: Criados através da atribuicao e removidos atraves da palavra reservada "del".
+Atributos Dinâmicos: Criados através da atribuição e removidos atraves da palavra reservada "del".
 Atributos de Classe: ou "Atributo Default", é criado fora do "__init__", pois nao vai variar independente 
 da "Classe" e assim ocupa menos espaço na memória (é o mesmo para todos os objetos).
 """

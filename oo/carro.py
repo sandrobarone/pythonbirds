@@ -44,7 +44,7 @@ Exemplo:
 >>> motor.velocidade
 0
 
->>> # Testando Diirecao
+>>> # Testando Direcao
 
 >>> direcao = Direcao()
 >>> direcao.valor
@@ -102,10 +102,53 @@ Exemplo:
 
 """
 
+NORTE = "Norte"
+SUL = "Sul"
+LESTE = "Leste"
+OESTE = "Oeste"
+
+
+class Direcao(object):
+
+    rotacao_a_direita_dct = {NORTE: LESTE, LESTE: SUL, SUL: OESTE, OESTE: NORTE}
+    rotacao_a_esquerda_dct = {NORTE: OESTE, OESTE: SUL, SUL: LESTE, LESTE: NORTE}
+
+    def __init__(self):
+        self.valor = NORTE
+
+    def girar_a_direita(self):
+        """
+        As linhas abaixo pode ser substituida pela definicao do dicionario acima (rotacao_a_direita_dct)
+        mais a unica linha logo abaixo deste comentario.
+
+        if self.valor == NORTE:
+            self.valor = LESTE
+        elif self.valor == LESTE:
+            self.valor = SUL
+        elif self.valor == SUL:
+            self.valor = OESTE
+        """
+        self.valor = self.rotacao_a_direita_dct[self.valor]
+
+    def girar_a_esquerda(self):
+        self.valor = self.rotacao_a_esquerda_dct[self.valor]
+
 
 class Motor:
     def __init__(self):
         self.velocidade = 0
 
-    pass
+    def acelerar(self):
+        self.velocidade += 1
 
+    def frear(self):
+        self.velocidade -= 2
+        # Preciso controlar que a velocidade minima possivel seja ZERO
+        self.velocidade = max(0, self.velocidade)
+        """
+        Assim a velocidade será igual ao valor máximo entre "0" e o valor da velocidade atual "self.velocidade".
+        Se por acaso tiver um valor negativo na velocidade atual "self.velocidade", ZERO será maior que 
+        este valor e retornará "0".
+        Se por acaso tiver um valor positivo na velocidade atual "self.velocidade", ZERO será menor que 
+        este valor e retornará "self.velocidade".
+        """
