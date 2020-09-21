@@ -191,4 +191,5 @@ class Motor:
         este valor e retornará "0".
         Se por acaso tiver um valor positivo na velocidade atual "self.velocidade", ZERO será menor que 
         este valor e retornará "self.velocidade".
+        
         """
